@@ -27,6 +27,7 @@
     "postcss": "8.4.24",
     "query-string": "^8.1.0",
     "react": "18.2.0",
+    "react-date-range": "^1.4.0",
     "react-dom": "18.2.0",
     "react-flag-kit": "^1.1.1",
     "react-hook-form": "^7.45.0",
@@ -43,6 +44,7 @@
     "@prisma/prisma-fmt-wasm": "^4.17.0-13.e6267db1c1bc827b8eb87f644288c3cb0800ec89",
     "@types/bcrypt": "^5.0.0",
     "@types/leaflet": "^1.9.3",
+    "@types/react-date-range": "^1.4.4",
     "eslint-config-prettier": "^8.8.0",
     "prettier-plugin-prisma": "^4.13.0",
     "prisma": "^4.16.1"

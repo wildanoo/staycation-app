@@ -1,7 +1,6 @@
 "use client";
 import { Range } from "react-date-range";
 import { toast } from "react-hot-toast";
-import { Reservation } from "@prisma/client";
 import axios from "axios";
 import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
@@ -13,7 +12,7 @@ import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
 import { categories } from "@/app/components/navbar/Categories";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { SafeListing, SafeUser } from "@/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 const initialDateRange = {
    startDate: new Date(),
@@ -22,7 +21,7 @@ const initialDateRange = {
 };
 
 interface ListingClientProps {
-   reservations?: Reservation[];
+   reservations?: SafeReservation[];
    listing: SafeListing & {
       user: SafeUser;
    };
@@ -86,7 +85,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
    useEffect(() => {
       if (dateRange.startDate && dateRange.endDate) {
-         const dayCount = differenceInCalendarDays(dateRange.startDate, dateRange.endDate);
+
+         const dayCount = differenceInCalendarDays(dateRange.endDate, dateRange.startDate);
 
          if (dayCount && listing.price) {
             setTotalPrice(dayCount * listing.price);

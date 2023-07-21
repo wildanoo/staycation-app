@@ -2,7 +2,7 @@
 import { Range } from "react-date-range";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { differenceInCalendarDays, differenceInDays, eachDayOfInterval } from "date-fns";
+import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
@@ -72,8 +72,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
          .then(() => {
             toast.success("Listing reserved!");
             setDateRange(initialDateRange);
-            // redirect to trips
-            router.refresh();
+            router.push("/trips");
          })
          .catch(() => {
             toast.error("Something went wrong.");
@@ -85,7 +84,6 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
    useEffect(() => {
       if (dateRange.startDate && dateRange.endDate) {
-
          const dayCount = differenceInCalendarDays(dateRange.endDate, dateRange.startDate);
 
          if (dayCount && listing.price) {

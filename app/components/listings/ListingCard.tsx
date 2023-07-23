@@ -89,7 +89,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
                {!reservation && <div className="font-light">night</div>}
             </div>
             {onAction && actionLabel && (
-               <Button disabled={disabled} small label={actionLabel} onClick={() => {}} />
+               <Button disabled={disabled} small label={actionLabel} onClick={handleCancel} />
             )}
          </div>
       </div>
